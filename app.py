@@ -30,9 +30,25 @@ def get_files():
     return filenames
 
 
+def prepare_data(data: list, custom_name) -> list:
+    data.sort(key=lambda x: x[0].split()[1] if len(x[0].split()) > 1 else x[0])
+    for item in data:
+        if "Full Name" in item:
+            first_string_index = data.index(item)
+            first_string = data.pop(first_string_index)
+            data.insert(0, first_string)
+
+        elif custom_name in item:
+            second_string_index = data.index(item)
+            second_string = data.pop(second_string_index)
+            data.insert(1, second_string)
+    return data
+
+
 if __name__ == '__main__':
     names_and_pathes = get_files()
     for name, path in names_and_pathes.items():
         data = get_data(path=path)
+        data = prepare_data(data, custom_name="")
         save_data(data=data, name=name)
         os.remove(path)
