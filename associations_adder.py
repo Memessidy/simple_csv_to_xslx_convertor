@@ -21,7 +21,6 @@ class Application:
                 continue
             name_and_surname, status = get_name_val(name_and_surname)
             self.nicknames_and_statuses.append((name_and_surname, status))
-            # print(name_and_surname, status)
 
     def status_filter(self):
         for item in self.nicknames_and_statuses:
@@ -43,6 +42,7 @@ class Application:
             for nickname_item in self.nicknames_true_status:
                 nickname_lowercase = nickname_item[1]
                 nickname_default = nickname_item[0]
+                nickname_default = nickname_default.strip()
                 addable = name_validator.check_addable(nickname=nickname_lowercase, good_name=good_name)
                 if addable:
                     cur_names[good_name].append(nickname_default)

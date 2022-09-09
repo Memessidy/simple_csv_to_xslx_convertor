@@ -18,6 +18,13 @@ class Content_generator:
                 for names_string in self.nicknames_and_names:
                     name = names_string[0]
                     nicknames = names_string[1:]
+
+                    nicknames_list = [i.split(",") for i in nicknames][0]
+                    nicknames_list = [i.strip() for i in nicknames_list]
+
+                    nicknames.clear()
+                    nicknames.extend(nicknames_list)
+
                     if nickname in nicknames:
                         val[0] = name
 
