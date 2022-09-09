@@ -29,7 +29,8 @@ class Content_generator:
                         val[0] = name
 
     def prepare_data(self):
-        self.content.sort(key=lambda x: x[0].split()[1] if len(x[0].split()) > 1 else x[0])
+        self.content.sort(key=lambda x: x[0].split()[0] if len(x[0].split()) > 1 else x[0])
+
         for item in self.content:
             if "Full Name" in item:
                 first_string_index = self.content.index(item)
