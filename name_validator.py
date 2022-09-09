@@ -51,6 +51,7 @@ def get_name_val(name_and_surname: str) -> tuple:
 def check_addable(nickname: list, good_name: str):
 
     good_name = good_name.lower()
+    nickname = [i.strip() for i in nickname]
     combination = " ".join(list(reversed(nickname)))
     nickname = " ".join(nickname)
 
